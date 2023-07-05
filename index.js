@@ -77,10 +77,6 @@ class Counter {
     return this.initialNumber
   }
 }
-counter = new Counter(3)
-
-// console.log(counter.countDown())
-// console.log(counter.countDown())
 
 class Seasons {
   /**
@@ -116,7 +112,6 @@ class Seasons {
     return this.season
   }
 }
-
 
 class Car {
   /**
@@ -184,14 +179,6 @@ class Car {
     return this.tank
   }
 }
-truck = new Car('f150', 15, 25)
-console.log(truck.odometer, 'miles driven')
-console.log(`Drove ${truck.drive(100)} miles`)
-console.log(`Drove ${truck.drive(200)} miles`)
-console.log(`Drove ${truck.drive(400)} miles`)
-// console.log(truck)
-// truck.refuel(5)
-// console.log(truck)
 
 /**
  * [Exercise 7] Asynchronously resolves whether a number is even
@@ -206,9 +193,12 @@ console.log(`Drove ${truck.drive(400)} miles`)
  *    // result is false
  * })
  */
-function isEvenNumberAsync(number) {
+async function isEvenNumberAsync(number) {
   // ✨ implement
+  return number%2 === 0
 }
+const ten = isEvenNumberAsync(10)
+
 
 module.exports = {
   trimProperties,
