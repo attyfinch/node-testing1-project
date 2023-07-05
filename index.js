@@ -7,11 +7,15 @@
  * trimProperties({ name: '  jane  ' }) // returns a new object { name: 'jane' }
  */
 function trimProperties(obj) {
-  for (const [key, val] of Object.entries(obj)) {
-    obj[key] = val.trim()
+  let copy = Object.assign({}, obj)
+
+  for (const [key, val] of Object.entries(copy)) {
+    copy[key] = val.trim()
   }
-  return Object.assign({}, obj)
+  return copy
 }
+
+
 
 /**
  * [Exercise 2] trimPropertiesMutation trims in place the properties of an object
