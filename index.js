@@ -185,12 +185,10 @@ class Car {
   }
 }
 truck = new Car('f150', 15, 25)
-console.log(truck.odometer)
-// console.log(truck.drive(100))
-// console.log(truck.drive(100))
-// console.log(truck.drive(100))
-// console.log(truck.drive(100))
-// console.log(truck.drive(100))
+console.log(truck.odometer, 'miles driven')
+console.log(`Drove ${truck.drive(100)} miles`)
+console.log(`Drove ${truck.drive(200)} miles`)
+console.log(`Drove ${truck.drive(400)} miles`)
 // console.log(truck)
 // truck.refuel(5)
 // console.log(truck)

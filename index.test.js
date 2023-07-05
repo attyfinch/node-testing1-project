@@ -118,14 +118,52 @@ describe('[Exercise 6] Car', () => {
     focus = new utils.Car('focus', 20, 30) // each test must start with a fresh car
   })
   test('[15] driving the car returns the updated odometer', () => {
-    const drive = focus.drive(100)
+    let drive = focus.drive(100)
     expect(focus.odometer).toBe(100)
+    drive = focus.drive(100)
+    expect(focus.odometer).toBe(200)
   })
   test('[16] driving the car uses gas', () => {
-    
+    let drive = focus.drive(100)
+    let tank = focus.tank
+    expect(tank).toBeLessThan(focus.tankSize)
+
+    /* Tests tank keeps decreasing on subsequent drives*/
+    drive = focus.drive(100)
+    let tank2 = focus.tank
+    expect(tank2).toBeLessThan(tank)
+
   })
-  // test('[17] refueling allows to keep driving', () => {})
-  // test('[18] adding fuel to a full tank has no effect', () => {})
+  test('[17] refueling allows to keep driving', () => {
+    let drive = focus.drive(600)
+    expect(focus.tank).toBe(0)
+
+    /* tank is empty, odometer doesn't cahnge */
+    drive = focus.drive(100)
+    expect(focus.odometer).toBe(600)
+
+    /* tank doesn't exceed tank size */
+    focus.refuel(100)
+    expect(focus.tank).toBeGreaterThan(0)
+    expect(focus.tank).toBe(20)
+
+    /* car resumes driving, but runs out of gas again */
+    focus.drive(600)
+    focus.drive(600)
+    expect(focus.odometer).toBe(1200)
+
+    /* car refuels and resumes driving */
+    focus.refuel(20)
+    focus.drive(100)
+    expect(focus.odometer).toBe(1300)
+
+  })
+
+  test('[18] adding fuel to a full tank has no effect', () => {
+    /* no matter how much gas is added, tank never exceeds 20 */
+    focus.refuel(10000000)
+    expect(focus.tank).toBe(20)    
+  })
 })
 
 describe('[Exercise 7] isEvenNumberAsync', () => {
